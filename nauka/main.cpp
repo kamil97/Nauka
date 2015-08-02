@@ -53,7 +53,29 @@ int Cloatz(int k)
 }
 
 
+int SortowanieTablicy(int* tablica, int rozmiar)
+{
+    for(int i=0; i<rozmiar; i++)
+    {
+        for( int j = 0; j < rozmiar - 1; j++ )
+        {
+            if(tablica[j]>tablica[j+1])
+                 swap( tablica[ j ], tablica[ j + 1 ] );
+        }
+    }
+}
 
+
+int SzukajElementu(int* tablica, int rozmiar, int szukany_element)
+{
+    for(int i=0; i<rozmiar; i++)
+    {
+        if(szukany_element==tablica[i])
+        {
+            return i;
+        }
+    }
+}
 
 
 
@@ -71,6 +93,12 @@ int main()
 
     int c = 6;
     cout << Cloatz(c) << endl;
+
+    int rozmiar = 15;
+    int tablica[rozmiar];
+
+    cout <<SortowanieTablicy(tablica,rozmiar);
+    cout<<SzukajElementu(tablica,rozmiar);
 
 
     return 0;
