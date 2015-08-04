@@ -1,0 +1,10 @@
+1.napisac strukture ktora bedzie reprezentowac punkt w ukladzie wspolzednych.
+	-2 konstruktory -jeden bez parametru drugi z parametrem
+
+2.metoda ktora oblicza odleglosc po miedzy punktami
+3.struktury reprezentujace odcinek
+2 konstruktory -jeden bez parametru drugi z parametrem
+liczenie dlugosci odcinka
+sprawdzanie czy dwa odcinki sa rownej dlugosci
+sprawdzanie czy dwa odcinki sa rownolegle
+-//- sa prostopadle
