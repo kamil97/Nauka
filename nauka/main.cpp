@@ -54,7 +54,8 @@ void Zycie()
     cout <<imie<<"zycie= "<<hp<<endl;
 }
 
-void Uderz(Wojownik przeciwnik)
+//musi byc przekazany przez referencje bo chce zmienic stan przeciwnika
+void Uderz(Wojownik& przeciwnik)
 {
     przeciwnik.Zycie();
     if(przeciwnik.zrecznosc < this->zrecznosc)
@@ -62,12 +63,21 @@ void Uderz(Wojownik przeciwnik)
         przeciwnik.hp = przeciwnik.hp - this->sila;
     }else
     {
-        przeciwnik.hp = przeciwnik.hp- this-> sila/2;
+        przeciwnik.hp = przeciwnik.hp - (this-> sila/2);
     }
 przeciwnik.Zycie();
 }
 
-
+bool Czy_zyje()
+{
+    if(hp>0)
+    {
+        return true;
+    }else
+    {
+        return false;
+    }
+}
 
 
 };
@@ -95,7 +105,13 @@ int main()
 
 
     Wojownik pawel(5,20,14,"lancelot pawel");
-    kamil.Uderz(pawel);
-    pawel.Uderz(kamil);
+
+    do
+    {
+        cout <<"=============="<<endl;
+        kamil.Uderz(pawel);
+        pawel.Uderz(kamil);
+    }while(kamil.Czy_zyje()&& pawel.Czy_zyje());
+
     return 0;
 }
