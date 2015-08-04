@@ -7,6 +7,18 @@ using namespace std;
 void FillTable(int* table, int _size);
 void ShowTable(int* table, int _size);
 
+
+int SzukajElementu(int* tablica, int rozmiar, int szukany_element)
+{
+    for(int i=0; i<rozmiar; i++)
+    {
+        if(szukany_element==tablica[i])
+        {
+            return i;
+        }
+    }
+}
+
 int main()
 {
     int tab[5];
