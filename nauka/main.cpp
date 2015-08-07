@@ -5,6 +5,7 @@ using namespace std;
 struct Wojownik
 {
     //POLA
+    int max_hp;
     int hp;
     int sila;
     int zrecznosc;
@@ -13,9 +14,10 @@ struct Wojownik
     //Konstruktor
     Wojownik()
     {
-        hp =0;
-        sila=0;
-        zrecznosc=0;
+        max_hp=20;
+        hp =20;
+        sila=10;
+        zrecznosc=5;
         imie = "";
     }
 
@@ -26,10 +28,11 @@ struct Wojownik
 
     Wojownik(int _sila, int _zrecznosc, int _hp, string _imie)
     {
-      sila = _sila;
-      zrecznosc = _zrecznosc;
-      hp = _hp;
-      imie = _imie;
+        max_hp = _hp;
+        sila = _sila;
+        zrecznosc = _zrecznosc;
+        hp = _hp;
+        imie = _imie;
     }
 
     //Metody
@@ -43,41 +46,101 @@ struct Wojownik
         if(wysokosc_konia>zrecznosc)
         {
             return false;
-        }else
+        }
+        else
         {
             return true;
         }
     }
 
-void Zycie()
-{
-    cout <<imie<<"zycie= "<<hp<<endl;
-}
+    void Zycie()
+    {
+        cout <<imie<<"zycie= "<<hp<<endl;
+    }
 
 //musi byc przekazany przez referencje bo chce zmienic stan przeciwnika
-void Uderz(Wojownik& przeciwnik)
-{
-    przeciwnik.Zycie();
-    if(przeciwnik.zrecznosc < this->zrecznosc)
+    void Uderz(Wojownik& przeciwnik)
     {
-        przeciwnik.hp = przeciwnik.hp - this->sila;
-    }else
-    {
-        przeciwnik.hp = przeciwnik.hp - (this-> sila/2);
+        przeciwnik.Zycie();
+        if(przeciwnik.zrecznosc < this->zrecznosc)
+        {
+            przeciwnik.hp = przeciwnik.hp - this->sila;
+        }
+        else
+        {
+            przeciwnik.hp = przeciwnik.hp - (this-> sila/2);
+        }
+        przeciwnik.Zycie();
     }
-przeciwnik.Zycie();
-}
 
-bool Czy_zyje()
-{
-    if(hp>0)
+    bool Czy_zyje()
     {
-        return true;
-    }else
-    {
-        return false;
+        if(hp>0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-}
+
+
+};
+
+struct Medyk
+{
+    //pole
+    int hp;
+    int sila;
+    int zrecznosc;
+    int mana;
+    string imie;
+
+    //konstruktor
+    Medyk()
+    {
+        hp = 10;
+        sila = 5;
+        zrecznosc = 3;
+        mana = 50;
+        imie ="";
+
+    }
+    Medyk(string _imie)// czemu to nie moze byc w kolejnej funkcji?
+    {
+        imie = _imie;
+    }
+    Medyk(int _hp, int _sila, int _zrecznosc, int _mana, string _imie)
+    {
+        sila = _sila;
+        zrecznosc = _zrecznosc;
+        hp = _hp;
+        mana = _mana;
+        imie = _imie;
+    }
+
+    //metody
+
+    void wskrzes(int hp)
+    {
+        hp = 100;
+    }
+
+    void Ulecz(Wojownik& jego_okreslenie)
+    {
+        if(jego_okreslenie.Czy_zyje())
+        {
+            if(jego_okreslenie.hp < jego_okreslenie.max_hp)
+            {
+                jego_okreslenie.hp = jego_okreslenie.max_hp;
+            }
+        }
+
+    }
+
+
+
 
 
 };
@@ -105,13 +168,18 @@ int main()
 
 
     Wojownik pawel(5,20,14,"lancelot pawel");
-
+    Medyk romek;
     do
     {
         cout <<"=============="<<endl;
         kamil.Uderz(pawel);
         pawel.Uderz(kamil);
-    }while(kamil.Czy_zyje()&& pawel.Czy_zyje());
+        romek.Ulecz(pawel);
+        //kamil.Uderz(romek);//
+
+
+    }
+    while(kamil.Czy_zyje()&& pawel.Czy_zyje());
 
     return 0;
 }
