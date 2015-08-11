@@ -32,7 +32,21 @@ int Sprawc_n(int n, int* tablica, int rozmiar)
         {
             ile_n=ile_n+1; // ile_n++;
         }
-    } return ile_n;
+    }
+    return ile_n;
+}
+
+int Suma_liczb_do_30(int n, int* tablica, int rozmiar)
+{
+    int suma = 0;
+    for(int i=0; i<rozmiar; i++)
+    {
+        if ((tablica[i]<30)&&(tablica[i]%n==0))
+        {
+            suma = tablica[i]+ suma;
+        }
+    }
+    return suma;
 }
 
 
@@ -47,9 +61,11 @@ int main()
     int tab[rozmiar];
     FillTableRandom(tab,rozmiar);
     int n=13;
+    cout <<Suma_liczb_do_30(n, tab, rozmiar)<<endl;
 
     cout << Sprawc_n(n, tab, rozmiar)<<endl;
     ShowTable(tab, rozmiar);
+
 
 
 
