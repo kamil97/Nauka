@@ -57,7 +57,7 @@ int main()
 
 
 
-    int rozmiar = 1000;
+    int rozmiar = 100;
     int tab[rozmiar];
     FillTableRandom(tab,rozmiar);
     int n=13;
