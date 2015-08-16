@@ -20,6 +20,29 @@ bool zamien_cyfre_na_kropke(string &zamiana)
 
 
 
+void przyklad_switch(string str)
+{
+    for(int i=0; i<=str.size(); i++)
+    {
+        switch(str[i])
+        {
+        case 'a':
+            {
+                cout << "mam a"<<endl; break;
+            }
+        case 'b':
+            {
+                cout << "mam b"<< endl; break;
+            }
+        default:
+            {
+                cout <<"-"<<endl; break;
+            }
+        }
+    }
+}
+
+
 
 
 
@@ -62,6 +85,18 @@ int main()
     cout <<test1<<endl;
     cout <<test2<<endl;
     cout<<test3<<endl;
+
+
+przyklad_switch("ad");
+przyklad_switch("aab");
+przyklad_switch("lgfk");
+
+
+//przyklad znaku konca stringa
+char test[] = "123567890";
+cout <<test<<endl;
+test[5]='\0';
+cout <<test<<endl;
 
     return 0;
 }
